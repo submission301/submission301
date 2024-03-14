@@ -1,0 +1,21 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-waymo
+  - _self_
+
+name: grid-topk-waymo
+model:
+  _head:
+    targets_config:
+      affinity_fn: TOP_K # BEV,3D,CENTER
+      k: 1
+
+hydra:
+  sweeper:
+    params:
+      model._head.targets_config.k: 512,1024,2048,4096,8192

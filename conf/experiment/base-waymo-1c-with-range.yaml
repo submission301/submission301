@@ -1,0 +1,24 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-waymo-1c
+
+name: base-waymo-1c-with-range
+model:
+  _backbone:
+    in_channels: 6 # Number of input channels.
+
+dataset:
+  _train_dataset:
+    range_view_config:
+      feature_column_names:
+        - "elongation"
+        - "intensity"
+        - "range"
+        - "x"
+        - "y"
+        - "z"

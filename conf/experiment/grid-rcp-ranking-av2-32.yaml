@@ -1,0 +1,21 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - rcp-av2-32
+  - _self_
+
+name: grid-rcp-ranking-av2-32
+model:
+  _head:
+    targets_config:
+      affinity_fn: GAUSSIAN
+      sigma: 0.75
+
+hydra:
+  sweeper:
+    params:
+      model._head.targets_config.affinity_fn: UNIFORM,GAUSSIAN,BEV,3D

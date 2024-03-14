@@ -1,0 +1,26 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-waymo
+  - _self_
+
+name: sota-waymo
+model:
+  _backbone:
+    stem_type: META
+
+  _head:
+    targets_config:
+      affinity_fn: 3D # BEV,3D,CENTER
+      normalize_affinities: false
+
+  post_processing_config:
+    num_pre_nms: 50000
+    num_post_nms: 1000
+    nms_threshold: 0.3
+    min_confidence: 0.5
+    nms_mode: WEIGHTED

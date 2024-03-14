@@ -1,0 +1,21 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-av2-32
+  - _self_
+
+name: grid-topk-av2-32
+model:
+  _head:
+    targets_config:
+      affinity_fn: GAUSSIAN # BEV,3D,CENTER
+      k: .inf
+
+hydra:
+  sweeper:
+    params:
+      model._head.targets_config.k: 1,2,4,8,16,32,64,128,256,512

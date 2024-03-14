@@ -1,0 +1,29 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - optimal-sigma-av2-32
+  - _self_
+
+name: rcp-av2-32
+model:
+  _head:
+    fpn:
+      1: 128
+      2: 64
+      4: 128
+
+    fpn_kernel_sizes:
+      1: [3, 3]
+      2: [3, 3]
+      4: [3, 3]
+
+    targets_config:
+      fpn_assignment_method: RANGE
+      range_partitions:
+        1: [30, .inf]
+        2: [15, 30]
+        4: [0, 15]

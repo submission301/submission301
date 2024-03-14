@@ -1,0 +1,21 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-av2-32
+  - _self_
+
+name: grid-sigma-affinities-av2-32
+model:
+  _head:
+    targets_config:
+      affinity_fn: GAUSSIAN # BEV,3D,CENTER
+      sigma: 0.75
+
+hydra:
+  sweeper:
+    params:
+      model._head.targets_config.sigma: 0.125,0.25,0.5,0.75,1.0,2.0

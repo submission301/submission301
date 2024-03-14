@@ -1,0 +1,15 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-waymo
+  - _self_
+
+name: gaussian-waymo
+model:
+  _head:
+    targets_config:
+      affinity_fn: GAUSSIAN

@@ -1,0 +1,17 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base
+  - override /model: center
+  - override /dataset: av2
+  - override /trainer: train
+  - _self_
+
+name: 3d-center-av2
+model:
+  _head:
+    assignment_method: 3D_CENTER

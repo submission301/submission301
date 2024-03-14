@@ -1,0 +1,46 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-waymo
+  - _self_
+
+name: rcp-rangedet-waymo
+model:
+  _head:
+    fpn:
+      1: 128
+      2: 64
+      4: 128
+
+    fpn_kernel_sizes:
+      1: [3, 3]
+      2: [3, 3]
+      4: [3, 3]
+
+    targets_config:
+      affinity_fn: BEV
+      fpn_assignment_method: RANGE
+      range_partitions:
+        1: [30, .inf]
+        2: [15, 30]
+        4: [0, 15]
+
+    classification_normalization_method: PIXELS
+    coding_weights: [3.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+    _cls_loss:
+      _target_: torchbox3d.nn.losses.classification.VarifocalLoss
+      alpha: 1.0
+      gamma: 2
+      reduction: "none"
+    _regression_loss:
+      _target_: torch.nn.SmoothL1Loss
+      reduction: "none"
+      beta: 0.111
+
+    classification_weight: 10.0
+    regression_weight: 8.0

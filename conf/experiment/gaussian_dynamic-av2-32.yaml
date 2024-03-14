@@ -1,0 +1,15 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-av2-32
+  - _self_
+
+name: gaussian_dynamic-av2-32
+model:
+  _head:
+    assignment_method: GAUSSIAN_DYNAMIC # BEV,3D,CENTER
+    normalize_affinities: true

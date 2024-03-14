@@ -1,0 +1,55 @@
+##########################################################################################################
+# Trainer Configuration                                                                                  #
+##########################################################################################################
+
+_target_: pytorch_lightning.trainer.trainer.Trainer
+accelerator: auto # torch.distributed backend. Defaults to distributed data parallel.
+benchmark: true
+# default_root_dir: ${hydra:runtime.output_dir}
+default_root_dir: ${hydra:runtime.output_dir}
+detect_anomaly: false
+devices: auto # Number of GPUs.
+gradient_clip_val: 35.0 # Maximum gradient norm before clipping.
+max_epochs: 10 # Maximum number of epochs during training.
+precision: bf16-mixed
+sync_batchnorm: false
+check_val_every_n_epoch: 5
+# num_sanity_val_steps: 0
+
+callbacks:
+  - _target_: pytorch_lightning.callbacks.LearningRateMonitor
+  # - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+  #   dirpath: ${hydra:runtime.output_dir}/checkpoints
+  #   # every_n_epochs: 1
+  #   # save_top_k: -1
+  #   save_on_train_epoch_end: true
+
+# logger:
+#   _target_: pytorch_lightning.loggers.TensorBoardLogger
+#   save_dir: ${hydra:runtime.output_dir}
+#   default_hp_metric: true
+
+logger:
+  _target_: pytorch_lightning.loggers.WandbLogger
+  save_dir: ${..default_root_dir}
+  dir: ${..default_root_dir}
+  log_model: true
+  group: ${name}
+  project: ${dataset.dataset_name}-eccv-24-submission-final-v4
+
+# profiler:
+#   _target_: pytorch_lightning.profilers.PyTorchProfiler
+#   filename: profile
+#   export_to_chrome: true
+#   with_stack: true
+#   with_flops: true
+#   with_modules: true
+#   profile_memory: true
+
+strategy:
+  _target_: pytorch_lightning.strategies.DDPStrategy
+  find_unused_parameters: false
+  gradient_as_bucket_view: true
+  static_graph: true
+  process_group_backend: nccl
+  # start_method: forkserver

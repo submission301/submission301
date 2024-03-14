@@ -1,0 +1,16 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-av2
+  - _self_
+
+name: base-av2-32
+dataset:
+  root_dir: ${oc.env:HOME}/data/datasets/av2-32-upper/sensor
+  _train_dataset:
+    range_view_config:
+      height: 32

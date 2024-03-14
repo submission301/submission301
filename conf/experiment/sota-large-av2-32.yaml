@@ -1,0 +1,24 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - sota-av2-32
+  - _self_
+
+name: sota-large-av2-32
+model:
+  _backbone:
+    layers: [512, 128, 128, 128, 128]
+
+  _head:
+    fpn:
+      1: 1024
+
+    fpn_kernel_sizes:
+      1: [3, 3]
+
+    classification_head_channels: 1024
+    regression_head_channels: 1024

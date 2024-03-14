@@ -1,0 +1,21 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-av2-32
+  - _self_
+
+name: grid-network-stem-av2-32
+model:
+  _head:
+    targets_config:
+      affinity_fn: GAUSSIAN # BEV,3D,CENTER
+      sigma: 0.75
+
+hydra:
+  sweeper:
+    params:
+      model._backbone.stem_type: BASIC,META,RANGE_PARTITION

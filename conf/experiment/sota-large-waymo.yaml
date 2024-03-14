@@ -1,0 +1,33 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-waymo
+  - _self_
+
+name: sota-large-waymo
+model:
+  _backbone:
+    layers: [128, 128, 128, 128, 128]
+    stem_type: META
+
+  _head:
+    fpn:
+      1: 256
+
+    classification_head_channels: 256
+    regression_head_channels: 256
+
+    targets_config:
+      affinity_fn: 3D # BEV,3D,CENTER
+      normalize_affinities: false
+
+  post_processing_config:
+    num_pre_nms: 50000
+    num_post_nms: 1000
+    nms_threshold: 0.3
+    min_confidence: 0.5
+    nms_mode: WEIGHTED

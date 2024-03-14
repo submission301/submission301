@@ -1,0 +1,43 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - topk32-av2-32
+  - _self_
+
+name: groups-topk32-av2-32
+model:
+  tasks:
+    0: ["REGULAR_VEHICLE"]
+
+    1: ["BICYCLIST", "MOTORCYCLIST", "PEDESTRIAN", "WHEELED_RIDER"]
+
+    2:
+      [
+        "BOLLARD",
+        "CONSTRUCTION_BARREL",
+        "CONSTRUCTION_CONE",
+        "MOBILE_PEDESTRIAN_CROSSING_SIGN",
+        "SIGN",
+        "STOP_SIGN",
+      ]
+
+    3:
+      [
+        "ARTICULATED_BUS",
+        "BOX_TRUCK",
+        "BUS",
+        "LARGE_VEHICLE",
+        "MESSAGE_BOARD_TRAILER",
+        "SCHOOL_BUS",
+        "TRUCK",
+        "TRUCK_CAB",
+        "VEHICULAR_TRAILER",
+      ]
+
+    4: ["BICYCLE", "MOTORCYCLE", "STROLLER", "WHEELED_DEVICE", "WHEELCHAIR"]
+
+    5: ["DOG"]

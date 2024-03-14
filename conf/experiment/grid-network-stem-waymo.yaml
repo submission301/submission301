@@ -1,0 +1,15 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-waymo
+  - _self_
+
+name: grid-network-stem-waymo
+hydra:
+  sweeper:
+    params:
+      model._backbone.stem_type: BASIC,META,RANGE_PARTITION

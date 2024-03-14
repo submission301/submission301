@@ -1,0 +1,16 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-av2-32
+  - _self_
+
+name: sigma-av2-32
+model:
+  _head:
+    targets_config:
+      sigma: 0.75
+      normalize_affinities: true

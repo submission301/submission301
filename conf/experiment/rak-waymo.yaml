@@ -1,0 +1,15 @@
+# @package _global_
+
+##########################################################################################################
+# EXPERIMENT CONFIGURATION FILE                                                                          #
+##########################################################################################################
+
+defaults:
+  - base-waymo
+  - _self_
+
+name: rak-waymo
+model:
+  _backbone:
+    stem_type: RANGE_PARTITION
+    projection_kernel_size: 3
